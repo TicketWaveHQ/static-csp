@@ -1,0 +1,8 @@
+{
+  "$comment": "For a host whose CSP header still allows 'unsafe-inline' scripts (for example because server-rendered pages share it). The header keeps everything else; this meta takes 'unsafe-inline' away from scripts on the static pages. Browsers enforce both, so every script source the header allows must be listed here too. 'wasm-unsafe-eval' and worker-src blob: are for a WebAssembly search index; stats.example.com stands in for an analytics host.",
+  "minPages": 100,
+  "directives": {
+    "script-src": ["'wasm-unsafe-eval'", "https://stats.example.com"],
+    "worker-src": ["'self'", "blob:"]
+  }
+}

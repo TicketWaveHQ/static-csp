@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Node.js ${{ matrix.node }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 22, 24]
+    steps:
+      - name: Check out
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node }}
+          # No dependencies and no lockfile, so nothing to cache.
+          package-manager-cache: false
+
+      - name: Test
+        run: npm test
+
+      # The worked example in the README, end to end: refuse, write, check.
+      - name: Example site
+        run: |
+          work="$RUNNER_TEMP/example"
+          cp -R examples "$work"
+          if node bin/static-csp.mjs "$work/refusal/dist"; then echo "refusal example passed but should fail"; exit 1; fi
+          (cd "$work/basic" && ! node "$GITHUB_WORKSPACE/bin/static-csp.mjs" --check)
+          (cd "$work/basic" && node "$GITHUB_WORKSPACE/bin/static-csp.mjs")
+          (cd "$work/basic" && node "$GITHUB_WORKSPACE/bin/static-csp.mjs" --check)

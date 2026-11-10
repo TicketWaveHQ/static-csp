@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Example Bakery</title>
+  <link rel="stylesheet" href="/assets/site.css">
+  <script>document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Bakery","name":"Example Bakery"}</script>
+  <script type="module" src="/assets/site.js"></script>
+</head>
+<body>
+  <h1>Example Bakery</h1>
+  <button type="button" id="theme">Switch theme</button>
+  <script>
+    document.getElementById("theme").addEventListener("click", () => {
+      const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem("theme", next);
+    });
+  </script>
+  <script defer src="https://stats.example.com/script.js" data-domain="bakery.example"></script>
+</body>
+</html>

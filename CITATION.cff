@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use or adapt this software, please cite it as below."
+title: "static-csp"
+abstract: "A hashed Content-Security-Policy meta element for any static site's build output. Hashes every inline script on each page, writes the policy first in the head, fails the build on inline event handlers and javascript: URLs, and verifies the output in CI with --check. Zero dependencies, Node.js 20 or later."
+type: software
+version: 0.1.0
+date-released: "2026-11-10"
+authors:
+  - family-names: Gilbert
+    given-names: Jordan
+    affiliation: "TicketWave HQ Ltd"
+contact:
+  - name: "TicketWave HQ Ltd"
+    website: "https://ticketwavehq.com"
+repository-code: "https://github.com/TicketWaveHQ/static-csp"
+license: MIT
+keywords:
+  - content-security-policy
+  - csp
+  - csp-hash
+  - static-site
+  - security-headers
+  - astro
+  - eleventy
+  - hugo
+  - nextjs

@@ -1,0 +1,17 @@
+{
+  "$comment": "Load a payment provider's script only on the pages that need it. The Stripe.js sources below are from Stripe's integration security guide (https://docs.stripe.com/security/guide, read 10 November 2026), less https://maps.googleapis.com, which it lists for the Address Element with your own Google Maps key. Provider lists change: check the guide before relying on this.",
+  "directives": {
+    "object-src": ["'none'"],
+    "base-uri": ["'self'"]
+  },
+  "routes": [
+    {
+      "match": ["checkout/**", "basket/index.html"],
+      "directives": {
+        "script-src": ["https://js.stripe.com", "https://*.js.stripe.com"],
+        "frame-src": ["https://js.stripe.com", "https://*.js.stripe.com", "https://hooks.stripe.com"],
+        "connect-src": ["'self'", "https://api.stripe.com"]
+      }
+    }
+  ]
+}

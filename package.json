@@ -1,0 +1,52 @@
+{
+  "name": "@ticketwavehq/static-csp",
+  "version": "0.1.0",
+  "description": "A hashed Content-Security-Policy <meta> for any static site's build output: hashes every inline script, writes the policy first in <head>, and fails the build on inline handlers and javascript: URLs.",
+  "private": false,
+  "type": "module",
+  "bin": {
+    "static-csp": "./bin/static-csp.mjs"
+  },
+  "exports": {
+    ".": "./src/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [
+    "content-security-policy",
+    "csp",
+    "csp-hash",
+    "static-site",
+    "security-headers",
+    "astro",
+    "eleventy",
+    "hugo",
+    "nextjs",
+    "cli"
+  ],
+  "author": "TicketWave HQ Ltd (https://ticketwavehq.com)",
+  "license": "MIT",
+  "homepage": "https://github.com/TicketWaveHQ/static-csp#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TicketWaveHQ/static-csp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TicketWaveHQ/static-csp/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$comment": "Example configuration. stats.example.com stands in for an analytics host.",
+  "dir": "dist",
+  "minPages": 2,
+  "directives": {
+    "script-src": ["https://stats.example.com"],
+    "connect-src": ["'self'", "https://stats.example.com"],
+    "object-src": ["'none'"],
+    "base-uri": ["'self'"]
+  }
+}
